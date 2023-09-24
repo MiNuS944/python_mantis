@@ -12,7 +12,7 @@ class Project:
         self.enabled = enabled
 
     def __repr__(self):
-        return "%s:%s;%s;%s;%s" % (self.name, self.status, self.inherit_global, self.view_state, self.description)
+        return "%s" % (self.name)
 
     def name_or_max(self):
         if self.name:
