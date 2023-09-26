@@ -28,11 +28,11 @@ def app(request, config):
     if fixture is None or not fixture.is_valid():
         fixture = Applicaton(browser=browser, base_url=config['web']['baseUrl'])
     web_config = config['webadmin']
-    fixture.session.ensure_login(username=web_config['username'], password=web_config['password'])
+    #fixture.session.ensure_login(username=web_config['username'], password=web_config['password'])
     return fixture
 
 
-#@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def configure_server(request, config):
     install_server_configuration(config['ftp']['host'], config['ftp']['username'], config['ftp']['password'])
     def fin():
