@@ -14,13 +14,4 @@ def test_add_project(app):
     assert old_list_count + 1 == app.mantis.count()
     new_list_projects = app.mantis.get_project_list()
     old_list_projects.append(add_project)
-    print(old_list_projects)
-    print(type(old_list_projects))
-    print(type(old_list_projects[0]))
-    print(type(old_list_projects[0].name))
-    print(new_list_projects)
-    print(type(new_list_projects))
-    print(type(new_list_projects[0]))
-    print(type(new_list_projects[0].name))
-    assert old_list_projects == new_list_projects
     assert sorted(old_list_projects, key=Project.name_or_max) == sorted(new_list_projects, key=Project.name_or_max)
