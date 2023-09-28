@@ -12,7 +12,6 @@ def test_add_project(app):
     old_list_projects = app.soap.get_projects_list()
     app.mantis.create_new_project(add_project)
     new_list_projects = app.soap.get_projects_list()
-    time.sleep(2)
     assert len(old_list_projects) + 1 == len(new_list_projects)
     old_list_projects.append(add_project)
     assert sorted(old_list_projects, key=Project.name_or_max) == sorted(new_list_projects, key=Project.name_or_max)

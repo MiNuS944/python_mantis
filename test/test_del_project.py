@@ -15,4 +15,5 @@ def test_del_project(app):
     app.mantis.delete_project_by_name(project)
     new_list_projects = app.soap.get_projects_list()
     assert len(old_list_projects) - 1 == len(new_list_projects)
+    old_list_projects.remove(project)
     assert sorted(old_list_projects, key=Project.name_or_max) == sorted(new_list_projects, key=Project.name_or_max)
