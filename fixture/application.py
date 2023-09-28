@@ -5,6 +5,7 @@ from fixture.mantis import ProjectHelper
 from fixture.james import JamesHelper
 from fixture.singup import SignupHelper
 from fixture.mail import MailHelper
+from fixture.soap import SoapHelper
 
 class Applicaton:
 
@@ -23,6 +24,7 @@ class Applicaton:
         self.james = JamesHelper(self)
         self.signup = SignupHelper(self)
         self.mail = MailHelper(self)
+        self.soap = SoapHelper(self)
         self.config = config
         self.base_url = config['web']['baseUrl']
 

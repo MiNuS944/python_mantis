@@ -95,3 +95,11 @@ class ProjectHelper:
         self.open_first_project_from_row()
         wd.find_element(By.CSS_SELECTOR, '[value="Удалить проект"]').click()
         wd.find_element(By.CSS_SELECTOR, '[value="Удалить проект"]').click()
+    
+    def delete_project_by_name(self, project):
+        wd = self.app.wd
+        self.open_home_page()
+        self.manage_projects()
+        wd.find_element(By.LINK_TEXT, "%s" % project.name).click()
+        wd.find_element(By.CSS_SELECTOR, '[value="Удалить проект"]').click()
+        wd.find_element(By.CSS_SELECTOR, '[value="Удалить проект"]').click()

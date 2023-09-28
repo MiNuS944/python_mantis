@@ -1,5 +1,6 @@
 from random import randint
 from model.project import Project
+import time
 
 
 def test_add_project(app):
@@ -8,10 +9,10 @@ def test_add_project(app):
                            status='разрабатываемый',
                            view_state='общая',
                            description="тесттесттест")
-    old_list_projects = app.mantis.get_project_list()
-    old_list_count = app.mantis.count()
+    old_list_projects = app.soap.get_projects_list()
     app.mantis.create_new_project(add_project)
-    assert old_list_count + 1 == app.mantis.count()
-    new_list_projects = app.mantis.get_project_list()
+    new_list_projects = app.soap.get_projects_list()
+    time.sleep(2)
+    assert len(old_list_projects) + 1 == len(new_list_projects)
     old_list_projects.append(add_project)
     assert sorted(old_list_projects, key=Project.name_or_max) == sorted(new_list_projects, key=Project.name_or_max)

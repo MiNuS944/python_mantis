@@ -1,6 +1,6 @@
 import string
 import random
-import time
+
 
 def random_username(prefix, maxlen):
     symbols = string.ascii_letters
@@ -12,6 +12,4 @@ def test_signup_new_account(app):
     password = "test"
     app.james.ensure_user_exists(username, password)
     app.signup.new_user(username, email, password)
-    time.sleep(2)
-    app.session.login(username, password)
-    time.sleep(2)
+    assert app.soap.can_login(username, password)
